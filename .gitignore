@@ -1,0 +1,12 @@
+*.vscode*
+*.d
+*.o
+*.obj
+*.gch
+*.pch
+*.so
+*.a
+*.lib
+*.exe
+*.out
+*.app
