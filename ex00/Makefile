@@ -4,26 +4,30 @@ CXXFLAGS = -Wall -Wextra -Werror -g3 -std=c++98
 
 NAME = Fixed
 FILES = main.cpp Fixed.cpp
-OBJ = $(FILES:.cpp=.o)
+
+OBJ_DIR = .obj
+OBJ = $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(FILES))
 
 $(NAME): $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-	@printf "compilation done!\n"
+	@printf "compiled ✅\n"
 
-%.o: %.cpp
+$(OBJ_DIR):
+	@mkdir -p .obj
+
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
-	@printf "."
+	@printf ". "
 
 all: $(NAME)
-	clean
 
 clean:
-	@rm -f $(OBJ)
-	@echo "object files deleted"
+	@rm -rf $(OBJ_DIR)
+	@echo "objects cleaned 🧹"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "binaries files deleted"
+	@echo "binaries cleaned 🧹"
 
 re: fclean all
 
