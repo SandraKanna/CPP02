@@ -6,7 +6,7 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:31:28 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/24 18:41:03 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/25 18:30:18 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,26 @@ public:
 	int toInt(void) const;
 	
 	//comparison operators
-	Fixed & operator>(Fixed const & to_compare);
-	Fixed & operator<(Fixed const & to_compare);
-	Fixed & operator>=(Fixed const & to_compare);
-	Fixed & operator<=(Fixed const & to_compare);
-	Fixed & operator==(Fixed const & to_compare);
-	Fixed & operator!=(Fixed const & to_compare);
+	bool operator>(Fixed const & i);
+	bool operator<(Fixed const & i);
+	bool operator>=(Fixed const & i);
+	bool operator<=(Fixed const & i);
+	bool operator==(Fixed const & i);
+	bool operator!=(Fixed const & i);
 
 	//arithmetic operators
-	Fixed & operator+(Fixed const & to_copy);
-	Fixed & operator-(Fixed const & to_copy);
-	Fixed & operator*(Fixed const & to_copy);
-	Fixed & operator/(Fixed const & to_copy);
+	Fixed operator+(Fixed const & i);
+	Fixed operator-(Fixed const & i);
+	Fixed operator*(Fixed const & i);
+	Fixed operator/(Fixed const & i);
 
 	//increment/decrement operators
-	Fixed & operator++();
-	Fixed & operator--();
-	Fixed & operator++();
-	Fixed & operator--();
+	Fixed & operator++(); //prefix
+	Fixed operator++(int); //postfix
+	Fixed & operator--(); //prefix
+	Fixed operator--(int); //postfix
+	
+	//overloaded member functions
 	
 };
 
@@ -61,11 +63,13 @@ std::ostream &operator<< (std::ostream & o, Fixed const & i);
 # endif
 
 /*
-Add public member functions to overload these operators:
-• The 6 comparison operators: >, <, >=, <=, == and !=.
-• The 4 arithmetic operators: +, -, *, and /.
-• The 4 increment/decrement (pre-increment and post-increment, pre-decrement and
-post-decrement) operators, that will increase or decrease the fixed-point value from
-the smallest representable ϵ such as 1 + ϵ > 1
+• A static member function min that takes as parameters two references on fixed-point
+numbers, and returns a reference to the smallest one.
+• A static member function min that takes as parameters two references to constant
+fixed-point numbers, and returns a reference to the smallest one.
+• A static member function max that takes as parameters two references on fixed-point
+numbers, and returns a reference to the greatest one.
+• A static member function max that takes as parameters two references to constant
+fixed-point numbers, and returns a reference to the greatest one
 
 */

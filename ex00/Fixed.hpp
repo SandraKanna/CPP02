@@ -6,7 +6,7 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:31:28 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/22 15:08:12 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/25 17:03:44 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ public:
 	int getRawBits(void) const; // Accessors to private member
 	void setRawBits(int const raw); // Accessors to private member
 };
-
-std::ostream &operator<< (std::ostream & o, Fixed const & i);
 
 # endif

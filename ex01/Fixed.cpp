@@ -6,7 +6,7 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:34:46 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/24 18:30:02 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/25 17:13:40 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ Fixed::Fixed(Fixed const & to_copy) {
 Fixed::Fixed(int const i) : _value(i) {
 	std::cout << "Int constructor called\n";
 	//multiply by 256 to convert it to fixed-point value, 
-	// _value *= pow(2, _fBits);
-	_value = i << _fBits;
+	_value *= pow(2, _fBits);
 }
 
 Fixed::Fixed(float const f) {
 	std::cout << "Float constructor called\n";
 	//multiply by 256 to convert it to fixed-point value and round it,
-	// _value = roundf(f * (pow(2, _fBits)));
-	_value = roundf(f * (1 << _fBits));
+	_value = roundf(f * (pow(2, _fBits)));
 	
 }
 
@@ -62,12 +60,10 @@ std::ostream & operator<<(std::ostream & o, Fixed const &i) {
 
 // Accessors
 int Fixed::getRawBits(void) const {
-	//std::cout << "getRawBits member function called\n";
 	return (_value);
 }
 
 void Fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member function called\n";
 	this->_value = raw;
 }
 

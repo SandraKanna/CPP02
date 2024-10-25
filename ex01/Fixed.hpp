@@ -6,7 +6,7 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:31:28 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/24 18:27:22 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/25 17:13:43 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ public:
 	int toInt(void) const; //member function to convert to int
 };
 
-std::ostream &operator<< (std::ostream & o, Fixed const & i);
+std::ostream &operator<< (std::ostream & o, Fixed const & i); //non member public method: overload insertion operator
 
 # endif

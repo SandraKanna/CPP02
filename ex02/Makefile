@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -Wextra -Werror -g3 -std=c++98
 #-fsanitize=address
 
 NAME = Fixed
-FILES = main.cpp Fixed.cpp
+FILES = main.cpp Fixed.cpp FixedAccessors.cpp FixedOperators.cpp
 
 OBJ_DIR = .obj
 OBJ = $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(FILES))

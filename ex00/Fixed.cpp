@@ -6,7 +6,7 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:34:46 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/22 16:06:38 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/25 17:05:02 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,4 @@ int Fixed::getRawBits(void) const {
 void Fixed::setRawBits(int const raw) {
 	std::cout << "setRawBits member function called\n";
 	this->_value = raw;
-}
-
-// non member overloading operator
-std::ostream & operator<<(std::ostream & o, Fixed const &i) {
-	o << i.getRawBits();
-	return (o);
 }
