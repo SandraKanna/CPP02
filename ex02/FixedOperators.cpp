@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FixedOperators.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sandra <sandra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:46:08 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/25 18:32:07 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/28 12:20:31 by sandra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,28 @@ bool Fixed::operator!=(Fixed const & i) {
 
 //arithmetic operators
 Fixed Fixed::operator+(Fixed const & i) {
+	std::cout << "addition operator called\n";
 	Fixed new_i;
 	new_i.setRawBits(this->_value + i.getRawBits());
 	return (new_i);
 }
 
 Fixed Fixed::operator-(Fixed const & i) {
+	std::cout << "subtraction operator called\n";
 	Fixed new_i;
 	new_i.setRawBits(this->_value - i.getRawBits());
 	return (new_i);
 }
 
 Fixed Fixed::operator*(Fixed const & i) {
+	std::cout << "multiplication operator called\n";
 	Fixed new_i;
 	new_i.setRawBits(this->_value * i.getRawBits());
 	return (new_i);
 }
 
 Fixed Fixed::operator/(Fixed const & i) {
+	std::cout << "division operator called\n";
 	if (i.getRawBits() == 0)
 		std::cout << "Cannot divide by zero\n";
 	Fixed new_i;
@@ -84,22 +88,26 @@ Fixed Fixed::operator/(Fixed const & i) {
 
 //increment/decrement operators
 Fixed & Fixed::operator++() {
+	std::cout << "pre increment operator called\n";
 	++(this->_value);
 	return (*this);
 }
 
 Fixed Fixed::operator++(int) {
+	std::cout << "post increment operator called\n";
 	Fixed ptr = *this;//creates a copy of the current state
 	++(this->_value);//increments the value for the next call
 	return (ptr);
 }
 
 Fixed & Fixed::operator--() {
+	std::cout << "pre decrement operator called\n";
 	--(this->_value);
 	return (*this);
 }
 
 Fixed Fixed::operator--(int) {
+	std::cout << "post decrement operator called\n";
 	Fixed ptr = *this;//creates a copy of the current state
 	--(this->_value);//decrements the value for the next call
 	return (ptr);
