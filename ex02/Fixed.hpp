@@ -6,7 +6,7 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:31:28 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/25 18:30:18 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:05:56 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ public:
 	Fixed & operator--(); //prefix
 	Fixed operator--(int); //postfix
 	
-	//overloaded member functions
+	//overloaded member functions (static dont need a specific instance)
+	static Fixed & min(Fixed & a, Fixed & b);
+	static Fixed const & min(Fixed const & a, Fixed const & b); //only read access
+	static Fixed & max(Fixed & a, Fixed & b);
+	static Fixed const & max(Fixed const & a, Fixed const & b);//only read access
 	
 };
 

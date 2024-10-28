@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FixedOperators.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sandra <sandra@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:46:08 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/28 12:20:31 by sandra           ###   ########.fr       */
+/*   Updated: 2024/10/28 15:07:16 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ Fixed Fixed::operator-(Fixed const & i) {
 Fixed Fixed::operator*(Fixed const & i) {
 	std::cout << "multiplication operator called\n";
 	Fixed new_i;
-	new_i.setRawBits(this->_value * i.getRawBits());
+	int	result;
+	result = (this->_value >> _fBits) * i.getRawBits();
+	// result = result >> _fBits;
+	new_i.setRawBits(result);
 	return (new_i);
 }
 
@@ -81,7 +84,9 @@ Fixed Fixed::operator/(Fixed const & i) {
 	if (i.getRawBits() == 0)
 		std::cout << "Cannot divide by zero\n";
 	Fixed new_i;
-	new_i.setRawBits(this->_value / i.getRawBits());
+	int	result;
+	result = (this->_value << _fBits)/ i.getRawBits();
+	new_i.setRawBits(result);
 	return (new_i);
 }
 
