@@ -6,29 +6,24 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:46:08 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/28 17:25:56 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/28 17:28:08 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-//assignment operator
 Fixed & Fixed::operator=(Fixed const & to_copy) {
-	// std::cout << "Assignment operator called" << std::endl;
 	if (this != &to_copy) {
 		this->_value = to_copy.getRawBits();
 	}
 	return (*this);
 }
 
-//out stream (insertion) operator
 std::ostream & operator<<(std::ostream & o, Fixed const & i) {
 	o << i.toFloat();
 	return (o);
 }
 
-
-//comparison operators
 bool Fixed::operator>(Fixed const & i) const {
 	return (this->_value > i.getRawBits());
 }
@@ -53,24 +48,19 @@ bool Fixed::operator!=(Fixed const & i) const {
 	return (this->_value != i.getRawBits());
 }
 
-
-//arithmetic operators
 Fixed Fixed::operator+(Fixed const & i) const {
-	// std::cout << "addition operator called" << std::endl;
 	Fixed new_i;
 	new_i.setRawBits(this->_value + i.getRawBits());
 	return (new_i);
 }
 
 Fixed Fixed::operator-(Fixed const & i) const {
-	// std::cout << "subtraction operator called" << std::endl;
 	Fixed new_i;
 	new_i.setRawBits(this->_value - i.getRawBits());
 	return (new_i);
 }
 
 Fixed Fixed::operator*(Fixed const & i) const {
-	// std::cout << "multiplication operator called" << std::endl;
 	Fixed new_i;
 	int	result;
 	result = (this->_value >> _fBits) * i.getRawBits();
@@ -79,7 +69,6 @@ Fixed Fixed::operator*(Fixed const & i) const {
 }
 
 Fixed Fixed::operator/(Fixed const & i) const {
-	// std::cout << "division operator called" << std::endl;
 	if (i.getRawBits() == 0) {
 		std::cerr << "Cannot divide by zero" << std::endl;
 		return (Fixed());
@@ -91,29 +80,23 @@ Fixed Fixed::operator/(Fixed const & i) const {
 	return (new_i);
 }
 
-
-//increment/decrement operators
 Fixed & Fixed::operator++() {
-	// std::cout << "pre increment operator called" << std::endl;
 	++(this->_value);
 	return (*this);
 }
 
 Fixed Fixed::operator++(int) {
-	// std::cout << "post increment operator called" << std::endl;
 	Fixed ptr = *this;
 	++(this->_value);
 	return (ptr);
 }
 
 Fixed & Fixed::operator--() {
-	// std::cout << "pre decrement operator called" << std::endl;
 	--(this->_value);
 	return (*this);
 }
 
 Fixed Fixed::operator--(int) {
-	// std::cout << "post decrement operator called" << std::endl;
 	Fixed ptr = *this;
 	--(this->_value);
 	return (ptr);

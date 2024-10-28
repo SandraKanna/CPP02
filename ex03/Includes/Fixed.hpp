@@ -6,7 +6,7 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:31:28 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/28 17:26:00 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/28 17:28:23 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ private:
 	static int const _fBits;
 
 public:
-	Fixed(); //default
-	Fixed(Fixed const & to_copy); //copy constructor
+	Fixed();
+	Fixed(Fixed const & to_copy);
 	Fixed(int const i);
 	Fixed(float const f);
-	~Fixed(); //default
-	Fixed & operator=(Fixed const & to_copy); //assignment operator
+	~Fixed();
+	Fixed & operator=(Fixed const & to_copy);
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
 	float toFloat(void) const;
 	int toInt(void) const;
 	
-	//comparison operators
 	bool operator>(Fixed const & i) const;
 	bool operator<(Fixed const & i) const;
 	bool operator>=(Fixed const & i) const;
@@ -41,23 +40,20 @@ public:
 	bool operator==(Fixed const & i) const;
 	bool operator!=(Fixed const & i) const;
 
-	//arithmetic operators
 	Fixed operator+(Fixed const & i) const;
 	Fixed operator-(Fixed const & i) const;
 	Fixed operator*(Fixed const & i) const;
 	Fixed operator/(Fixed const & i) const;
 
-	//increment/decrement operators
-	Fixed & operator++(); //prefix
-	Fixed operator++(int); //postfix
-	Fixed & operator--(); //prefix
-	Fixed operator--(int); //postfix
+	Fixed & operator++();
+	Fixed operator++(int);
+	Fixed & operator--();
+	Fixed operator--(int);
 	
-	//overloaded member functions (static dont need a specific instance)
 	static Fixed & min(Fixed & a, Fixed & b);
-	static Fixed const & min(Fixed const & a, Fixed const & b); //only read access
+	static Fixed const & min(Fixed const & a, Fixed const & b);
 	static Fixed & max(Fixed & a, Fixed & b);
-	static Fixed const & max(Fixed const & a, Fixed const & b);//only read access
+	static Fixed const & max(Fixed const & a, Fixed const & b);
 };
 
 std::ostream &operator<< (std::ostream & o, Fixed const & i);

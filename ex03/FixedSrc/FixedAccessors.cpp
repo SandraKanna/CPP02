@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FixedAccessors.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:34:46 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/28 17:05:10 by skanna           ###   ########.fr       */
+/*   Created: 2024/10/25 16:47:01 by skanna            #+#    #+#             */
+/*   Updated: 2024/10/28 17:26:29 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Point.hpp"
+#include "Fixed.hpp"
 
-int main(void)
-{
-	// {
-	// 	Fixed a;
-	// 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-		
-	// 	std::cout << a << std::endl;
-	// 	std::cout << ++a << std::endl;
-	// 	std::cout << a << std::endl;
-	// 	std::cout << a++ << std::endl;
-	// 	std::cout << a << std::endl;
-		
-	// 	std::cout << b << std::endl;
-		
-	// 	std::cout << Fixed::max( a, b ) << std::endl;
-		
-	// }
+int Fixed::getRawBits(void) const {
+	return (_value);
+}
 
-	return (0);
+void Fixed::setRawBits(int const raw) {
+	this->_value = raw;
+}
+
+float Fixed::toFloat(void) const {
+	return((float)(this->getRawBits() / (float)(1 << _fBits)));
+}
+
+int Fixed::toInt(void) const {
+	return((int)(this->getRawBits() >> _fBits));
 }
