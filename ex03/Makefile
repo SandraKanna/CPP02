@@ -2,20 +2,20 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g3 -std=c++98 -IIncludes
 #-fsanitize=address
 
-NAME = Fixed
-FILES = main.cpp Point.cpp FixedSrc/*.cpp
+NAME = Point
+FILES = ${addprefix src/, main.cpp Point.cpp bsp.cpp \
+		${addprefix FixedSrc/, Fixed.cpp FixedAccessors.cpp \
+		FixedOperators.cpp FixedFunctions.cpp}}
 
 OBJ_DIR = .obj
-OBJ = $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(FILES))
+OBJ = $(patsubst src/%.cpp,$(OBJ_DIR)/src/%.o,$(FILES))
 
 $(NAME): $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@printf "compiled ✅\n"
 
-$(OBJ_DIR):
-	@mkdir -p .obj
-
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/src/%.o: src/%.cpp
+	@mkdir -p  $(@D)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 	@printf ". "
 

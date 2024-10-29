@@ -6,7 +6,7 @@
 /*   By: skanna <skanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:31:28 by skanna            #+#    #+#             */
-/*   Updated: 2024/10/25 17:13:43 by skanna           ###   ########.fr       */
+/*   Updated: 2024/10/29 15:18:52 by skanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ private:
 	static int const _fBits;
 
 public:
-	Fixed(); //default
-	Fixed(Fixed const & to_copy); //copy constructor
+	Fixed();
+	~Fixed();
 	Fixed(int const i); //constructor with int parameter
 	Fixed(float const f); //constructor with float parameter
-	~Fixed(); //default
-	Fixed & operator=(Fixed const & to_copy); //assignment operator
+	Fixed(Fixed const & to_copy);
+	Fixed & operator=(Fixed const & to_copy);
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
 	float toFloat(void) const; //member function to convert to float
