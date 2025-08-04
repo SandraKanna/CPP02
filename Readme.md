@@ -2,7 +2,7 @@
 
 In this module we get an introduction to **ad-hoc polymorphism** (using the same name funcion for different types of arguments) and **operator overloading** (a type of polymorphism which defines custom behaviors for arithmetic and stream operators like '=', '+', '-', '<' within a user's class).
 
-Starting from this C++ module, we will design classes in the Orthodox Canonical Form. This means that will contain at least these four required member functions:
+Starting from this C++ module, we will design classes in the Orthodox Canonical Form. This means that the classes will contain at least these four required member functions:
 * Default constructor
 * Copy constructor
 * Copy assignment operator
